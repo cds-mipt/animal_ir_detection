@@ -1,0 +1,3 @@
+[submodule "yolo-trt"]
+	path = yolo-trt
+	url = https://github.com/cds-mipt/yolo-trt.git
