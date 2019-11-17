@@ -8,7 +8,8 @@ import time
 from sensor_msgs.msg import Image
 
 RATE = 10
-FOLDER = "/home/jetson/Datasets/NKBVS"
+FOLDER = "/home/jetson/Datasets/zoohackathon_test/0000000351_0000000000"
+SIZE = (640, 448)
 
 
 def talker():
@@ -22,6 +23,7 @@ def talker():
 
     while not rospy.is_shutdown():
         img = cv2.imread(paths[img_idx])
+        img = cv2.resize(img, SIZE, interpolation=cv2.INTER_LINEAR)
         m = br.cv2_to_imgmsg(img, "bgr8")
         m.header.stamp.secs = time.time()
         m.header.stamp.nsecs = time.time() * 1e9 % 1e9
