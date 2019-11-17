@@ -31,9 +31,9 @@
 # labels_file_path : Text file with a list of object class labels
 
 --network_type=yolov3
---config_file_path=../yolo-trt/data/yolov3.cfg
---wts_file_path=../yolo-trt/data/yolov3.weights
---labels_file_path=../yolo-trt/data/labels.txt
+--config_file_path=../yolo-trt/data/yolov3_zoo.cfg
+--wts_file_path=../yolo-trt/data/epoch_25.weights
+--labels_file_path=../yolo-trt/data/labels_zoo.txt
 
 #Optional config params
 # precision : Inference precision of the network
@@ -49,9 +49,10 @@
 #Uncomment the lines below to use a specific config param
 #--precision=kINT8
 #--calibration_table_path=data/calibration/yolov3-calibration.table
---engine_file_path=../yolo-trt/data/yolov3-kFLOAT-kGPU-batch1-coco.engine
+--engine_file_path=../yolo-trt/data/yolov3-kFLOAT-kGPU-batch1-zoo.engine
 #--print_prediction_info=true
 #--print_perf_info=true
+--prob_thresh=0.3
 
 
 ### Config params trt-yolo-app only
