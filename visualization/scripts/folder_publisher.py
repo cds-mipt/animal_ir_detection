@@ -4,6 +4,7 @@ import rospy
 import os
 import cv2
 import cv_bridge
+import time
 from sensor_msgs.msg import Image
 
 RATE = 10
@@ -22,6 +23,8 @@ def talker():
     while not rospy.is_shutdown():
         img = cv2.imread(paths[img_idx])
         m = br.cv2_to_imgmsg(img, "bgr8")
+        m.header.stamp.secs = time.time()
+        m.header.stamp.nsecs = time.time() * 1e9 % 1e9
         pub.publish(m)
         img_idx = (img_idx + 1) % len(paths)
         rate.sleep()
